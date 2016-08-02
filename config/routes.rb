@@ -11,11 +11,16 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :contacts, only: :index
+    resources :comments, only: :index
+  end
+
+  resources :contacts do
+    resources :comments, only: :index
   end
 
   resources "users", only: [:index,:show,:create,:update,:destroy,:new]
   resources "contacts", only: [:index,:show,:create,:update,:destroy,:new]
   resources "contact_shares", only: [:index, :create, :show, :destroy, :new]
-
+  resources "comments", only: [:index, :create, :show, :destroy, :new]
 
 end
